@@ -628,8 +628,9 @@ class IntegrationTestCase(object):
         user = OratorTestUser.create(email="john@doe.com", created_at=now)
         fresh_user = OratorTestUser.find(user.id)
 
-        self.assertEqual(user.created_at, fresh_user.created_at)
-        self.assertEqual(now, fresh_user.created_at)
+
+        self.assertEqual(user.created_at.to_date_string(), fresh_user.created_at.to_date_string())
+        self.assertEqual(now.to_date_string(), fresh_user.created_at.to_date_string())
 
     def test_touches(self):
         user = OratorTestUser.create(email="john@doe.com")
@@ -649,16 +650,16 @@ class IntegrationTestCase(object):
 
         self.assertTrue(comment4.updated_at > comment4_updated_at)
         self.assertEqual(
-            comment4.updated_at, OratorTestComment.find(comment4.id).updated_at
+            comment4.updated_at.to_date_string(), OratorTestComment.find(comment4.id).updated_at.to_date_string()
         )
         self.assertTrue(
             comment3_updated_at < OratorTestComment.find(comment3.id).updated_at
         )
         self.assertEqual(
-            comment1_updated_at, OratorTestComment.find(comment1.id).updated_at
+            comment1_updated_at.to_date_string(), OratorTestComment.find(comment1.id).updated_at.to_date_string()
         )
         self.assertEqual(
-            comment2_updated_at, OratorTestComment.find(comment2.id).updated_at
+            comment2_updated_at.to_date_string(), OratorTestComment.find(comment2.id).updated_at.to_date_string()
         )
 
     def grammar(self):
