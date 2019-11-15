@@ -566,7 +566,7 @@ class Blueprint(object):
 
         :rtype: Fluent
         """
-        return self._add_column('datetime', column, with_time_zone=with_time_zone)
+        return self._add_column("datetime", column, with_time_zone=with_time_zone)
 
     def time(self, column, with_time_zone=False):
         """
@@ -577,7 +577,7 @@ class Blueprint(object):
 
         :rtype: Fluent
         """
-        return self._add_column('time', column, with_time_zone=with_time_zone)
+        return self._add_column("time", column, with_time_zone=with_time_zone)
 
     def timestamp(self, column, with_time_zone=False):
         """
@@ -588,7 +588,7 @@ class Blueprint(object):
 
         :rtype: Fluent
         """
-        return self._add_column('timestamp', column, with_time_zone=with_time_zone)
+        return self._add_column("timestamp", column, with_time_zone=with_time_zone)
 
     def nullable_timestamps(self):
         """
@@ -606,11 +606,11 @@ class Blueprint(object):
         :rtype: Fluent
         """
         if use_current:
-            self.timestamp('created_at', with_time_zone=with_time_zone).use_current()
-            self.timestamp('updated_at', with_time_zone=with_time_zone).use_current()
+            self.timestamp("created_at", with_time_zone=with_time_zone).use_current()
+            self.timestamp("updated_at", with_time_zone=with_time_zone).use_current()
         else:
-            self.timestamp('created_at', with_time_zone=with_time_zone)
-            self.timestamp('updated_at', with_time_zone=with_time_zone)
+            self.timestamp("created_at", with_time_zone=with_time_zone)
+            self.timestamp("updated_at", with_time_zone=with_time_zone)
 
     def soft_deletes(self, with_time_zone=False):
         """
@@ -618,7 +618,7 @@ class Blueprint(object):
 
         :rtype: Fluent
         """
-        return self.timestamp('deleted_at', with_time_zone=with_time_zone).nullable()
+        return self.timestamp("deleted_at", with_time_zone=with_time_zone).nullable()
 
     def binary(self, column):
         """

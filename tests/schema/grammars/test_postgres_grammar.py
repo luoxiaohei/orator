@@ -400,14 +400,14 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             statements[0],
         )
 
-        blueprint = Blueprint('users')
-        blueprint.datetime('foo', with_time_zone=True).with_time_zone()
+        blueprint = Blueprint("users")
+        blueprint.datetime("foo", with_time_zone=True).with_time_zone()
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
             'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE NOT NULL',
-            statements[0]
+            statements[0],
         )
 
     def test_adding_time(self):
@@ -421,14 +421,14 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             statements[0],
         )
 
-        blueprint = Blueprint('users')
-        blueprint.time('foo', with_time_zone=True)
+        blueprint = Blueprint("users")
+        blueprint.time("foo", with_time_zone=True)
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
             'ALTER TABLE "users" ADD COLUMN "foo" TIME(6) WITH TIME ZONE NOT NULL',
-            statements[0]
+            statements[0],
         )
 
     def test_adding_timestamp(self):
@@ -442,14 +442,14 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             statements[0],
         )
 
-        blueprint = Blueprint('users')
-        blueprint.timestamp('foo', with_time_zone=True)
+        blueprint = Blueprint("users")
+        blueprint.timestamp("foo", with_time_zone=True)
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
             'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE NOT NULL',
-            statements[0]
+            statements[0],
         )
 
     def test_adding_timestamp_with_current(self):
@@ -464,15 +464,15 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             statements[0],
         )
 
-        blueprint = Blueprint('users')
-        blueprint.timestamp('foo', with_time_zone=True).use_current()
+        blueprint = Blueprint("users")
+        blueprint.timestamp("foo", with_time_zone=True).use_current()
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
             'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE '
-            'DEFAULT CURRENT_TIMESTAMP(6) NOT NULL',
-            statements[0]
+            "DEFAULT CURRENT_TIMESTAMP(6) NOT NULL",
+            statements[0],
         )
 
     def test_adding_timestamps(self):
@@ -488,7 +488,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(expected[0], statements[0])
 
-        blueprint = Blueprint('users')
+        blueprint = Blueprint("users")
         blueprint.timestamps(with_time_zone=True)
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
@@ -498,10 +498,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             'ADD COLUMN "updated_at" TIMESTAMP(6) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP(6) NOT NULL'
         ]
 
-        self.assertEqual(
-            expected[0],
-            statements[0]
-        )
+        self.assertEqual(expected[0], statements[0])
 
     def test_adding_timestamps_not_current(self):
         blueprint = Blueprint("users")
@@ -515,7 +512,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
         ]
         self.assertEqual(expected[0], statements[0])
 
-        blueprint = Blueprint('users')
+        blueprint = Blueprint("users")
         blueprint.timestamps(use_current=False, with_time_zone=True)
         statements = blueprint.to_sql(self.get_connection(), self.get_grammar())
 
@@ -524,10 +521,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
             'ALTER TABLE "users" ADD COLUMN "created_at" TIMESTAMP(6) WITH TIME ZONE NOT NULL, '
             'ADD COLUMN "updated_at" TIMESTAMP(6) WITH TIME ZONE NOT NULL'
         ]
-        self.assertEqual(
-            expected[0],
-            statements[0]
-        )
+        self.assertEqual(expected[0], statements[0])
 
     def test_adding_binary(self):
         blueprint = Blueprint("users")

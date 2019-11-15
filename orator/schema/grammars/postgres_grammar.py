@@ -201,21 +201,23 @@ class PostgresSchemaGrammar(SchemaGrammar):
         return "DATE"
 
     def _type_datetime(self, column):
-        return 'TIMESTAMP(6) %s' % self._time_zone(column)
+        return "TIMESTAMP(6) %s" % self._time_zone(column)
 
     def _type_time(self, column):
-        return 'TIME(6) %s' % self._time_zone(column)
+        return "TIME(6) %s" % self._time_zone(column)
 
     def _type_timestamp(self, column):
         if column.use_current:
-            return 'TIMESTAMP(6) %s DEFAULT CURRENT_TIMESTAMP(6)' % self._time_zone(column)
+            return "TIMESTAMP(6) %s DEFAULT CURRENT_TIMESTAMP(6)" % self._time_zone(
+                column
+            )
 
-        return 'TIMESTAMP(6) %s' % self._time_zone(column)
+        return "TIMESTAMP(6) %s" % self._time_zone(column)
 
     def _time_zone(self, column):
-        with_or_without = 'WITH' if column.with_time_zone else 'WITHOUT'
+        with_or_without = "WITH" if column.with_time_zone else "WITHOUT"
 
-        return '%s TIME ZONE' % with_or_without
+        return "%s TIME ZONE" % with_or_without
 
     def _type_binary(self, column):
         return "BYTEA"
