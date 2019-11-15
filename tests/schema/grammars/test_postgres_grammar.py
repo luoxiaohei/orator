@@ -406,7 +406,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
-            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(0) WITH TIME ZONE NOT NULL',
+            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE NOT NULL',
             statements[0]
         )
 
@@ -427,7 +427,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
-            'ALTER TABLE "users" ADD COLUMN "foo" TIME(0) WITH TIME ZONE NOT NULL',
+            'ALTER TABLE "users" ADD COLUMN "foo" TIME(6) WITH TIME ZONE NOT NULL',
             statements[0]
         )
 
@@ -448,7 +448,7 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
-            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(0) WITH TIME ZONE NOT NULL',
+            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE NOT NULL',
             statements[0]
         )
 
@@ -470,8 +470,8 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         self.assertEqual(
-            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(0) WITH TIME ZONE '
-            'DEFAULT CURRENT_TIMESTAMP(0) NOT NULL',
+            'ALTER TABLE "users" ADD COLUMN "foo" TIMESTAMP(6) WITH TIME ZONE '
+            'DEFAULT CURRENT_TIMESTAMP(6) NOT NULL',
             statements[0]
         )
 
@@ -494,8 +494,8 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         expected = [
-            'ALTER TABLE "users" ADD COLUMN "created_at" TIMESTAMP(0) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP(0) NOT NULL, '
-            'ADD COLUMN "updated_at" TIMESTAMP(0) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP(0) NOT NULL'
+            'ALTER TABLE "users" ADD COLUMN "created_at" TIMESTAMP(6) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP(6) NOT NULL, '
+            'ADD COLUMN "updated_at" TIMESTAMP(6) WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP(6) NOT NULL'
         ]
 
         self.assertEqual(
@@ -521,8 +521,8 @@ class PostgresSchemaGrammarTestCase(OratorTestCase):
 
         self.assertEqual(1, len(statements))
         expected = [
-            'ALTER TABLE "users" ADD COLUMN "created_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL, '
-            'ADD COLUMN "updated_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL'
+            'ALTER TABLE "users" ADD COLUMN "created_at" TIMESTAMP(6) WITH TIME ZONE NOT NULL, '
+            'ADD COLUMN "updated_at" TIMESTAMP(6) WITH TIME ZONE NOT NULL'
         ]
         self.assertEqual(
             expected[0],

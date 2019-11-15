@@ -201,16 +201,16 @@ class PostgresSchemaGrammar(SchemaGrammar):
         return "DATE"
 
     def _type_datetime(self, column):
-        return 'TIMESTAMP(0) %s' % self._time_zone(column)
+        return 'TIMESTAMP(6) %s' % self._time_zone(column)
 
     def _type_time(self, column):
-        return 'TIME(0) %s' % self._time_zone(column)
+        return 'TIME(6) %s' % self._time_zone(column)
 
     def _type_timestamp(self, column):
         if column.use_current:
-            return 'TIMESTAMP(0) %s DEFAULT CURRENT_TIMESTAMP(0)' % self._time_zone(column)
+            return 'TIMESTAMP(6) %s DEFAULT CURRENT_TIMESTAMP(6)' % self._time_zone(column)
 
-        return 'TIMESTAMP(0) %s' % self._time_zone(column)
+        return 'TIMESTAMP(6) %s' % self._time_zone(column)
 
     def _time_zone(self, column):
         with_or_without = 'WITH' if column.with_time_zone else 'WITHOUT'

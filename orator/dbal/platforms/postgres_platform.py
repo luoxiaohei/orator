@@ -377,16 +377,16 @@ class PostgresPlatform(Platform):
         return "UUID"
 
     def get_datetime_type_declaration_sql(self, column):
-        return "TIMESTAMP(0) WITHOUT TIME ZONE"
+        return "TIMESTAMP(6) WITHOUT TIME ZONE"
 
     def get_datetimetz_type_declaration_sql(self, column):
-        return "TIMESTAMP(0) WITH TIME ZONE"
+        return "TIMESTAMP(6) WITH TIME ZONE"
 
     def get_date_type_declaration_sql(self, column):
         return "DATE"
 
     def get_time_type_declaration_sql(self, column):
-        return "TIME(0) WITHOUT TIME ZONE"
+        return "TIME(6) WITHOUT TIME ZONE"
 
     def get_string_type_declaration_sql(self, column):
         length = column.get("length", "255")
