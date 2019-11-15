@@ -59,7 +59,10 @@ extensions:
 	cython orator/utils/_helpers.pyx
 
 test:
-	${DOCKER_COMPOSE} exec orator poetry run pytest tests
+	${DOCKER_COMPOSE} exec orator poetry run pytest tests/schema/grammars/test_postgres_grammar.py --disable-warnings -s
+
+update:
+	${DOCKER_COMPOSE} exec orator poetry update
 
 start-containers:
 	${DOCKER_COMPOSE} up -d
